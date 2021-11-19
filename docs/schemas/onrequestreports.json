@@ -524,7 +524,7 @@
           {
             "name": "reportType",
             "in": "query",
-            "description": "Specifies the report type for the request.For example, reportType=ITEM creates an Item Report.",
+            "description": "Specifies the report type for the request. For example, reportType=ITEM creates an Item Report.",
             "required": true,
             "schema": {
               "type": "string",
@@ -537,7 +537,7 @@
           {
             "name": "reportVersion",
             "in": "query",
-            "description": "Version of report for which the request is created. Supported versions for each report type are currently 'reportVersion=v1' for the following reportType(s): ITEM AND INVENTORY .",
+            "description": "Version of report for which the request is created. Supported versions for each report type are currently 'reportVersion=v1' for the following reportType(s): INVENTORY and 'reportVersion=v1', 'reportVersion=v2' for the following reportType(s): ITEM.",
             "required": true,
             "schema": {
               "type": "string"

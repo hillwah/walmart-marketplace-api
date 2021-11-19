@@ -932,8 +932,8 @@ export const OnRequestReportApiAxiosParamCreator = function (configuration?: Con
         /**
          * Creates a new request for report by specifying the reportType and reportVersion.
          * @summary Create Report Request
-         * @param {'ITEM' | 'INVENTORY'} reportType Specifies the report type for the request.For example, reportType&#x3D;ITEM creates an Item Report.
-         * @param {string} reportVersion Version of report for which the request is created. Supported versions for each report type are currently \&#39;reportVersion&#x3D;v1\&#39; for the following reportType(s): ITEM AND INVENTORY .
+         * @param {'ITEM' | 'INVENTORY'} reportType Specifies the report type for the request. For example, reportType&#x3D;ITEM creates an Item Report.
+         * @param {string} reportVersion Version of report for which the request is created. Supported versions for each report type are currently \&#39;reportVersion&#x3D;v1\&#39; for the following reportType(s): INVENTORY and \&#39;reportVersion&#x3D;v1\&#39;, \&#39;reportVersion&#x3D;v2\&#39; for the following reportType(s): ITEM.
          * @param {string} authorization Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
          * @param {string} wMSECACCESSTOKEN The access token retrieved in the Token API call
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
@@ -1237,8 +1237,8 @@ export const OnRequestReportApiFp = function(configuration?: Configuration) {
         /**
          * Creates a new request for report by specifying the reportType and reportVersion.
          * @summary Create Report Request
-         * @param {'ITEM' | 'INVENTORY'} reportType Specifies the report type for the request.For example, reportType&#x3D;ITEM creates an Item Report.
-         * @param {string} reportVersion Version of report for which the request is created. Supported versions for each report type are currently \&#39;reportVersion&#x3D;v1\&#39; for the following reportType(s): ITEM AND INVENTORY .
+         * @param {'ITEM' | 'INVENTORY'} reportType Specifies the report type for the request. For example, reportType&#x3D;ITEM creates an Item Report.
+         * @param {string} reportVersion Version of report for which the request is created. Supported versions for each report type are currently \&#39;reportVersion&#x3D;v1\&#39; for the following reportType(s): INVENTORY and \&#39;reportVersion&#x3D;v1\&#39;, \&#39;reportVersion&#x3D;v2\&#39; for the following reportType(s): ITEM.
          * @param {string} authorization Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
          * @param {string} wMSECACCESSTOKEN The access token retrieved in the Token API call
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
@@ -1321,8 +1321,8 @@ export const OnRequestReportApiFactory = function (configuration?: Configuration
         /**
          * Creates a new request for report by specifying the reportType and reportVersion.
          * @summary Create Report Request
-         * @param {'ITEM' | 'INVENTORY'} reportType Specifies the report type for the request.For example, reportType&#x3D;ITEM creates an Item Report.
-         * @param {string} reportVersion Version of report for which the request is created. Supported versions for each report type are currently \&#39;reportVersion&#x3D;v1\&#39; for the following reportType(s): ITEM AND INVENTORY .
+         * @param {'ITEM' | 'INVENTORY'} reportType Specifies the report type for the request. For example, reportType&#x3D;ITEM creates an Item Report.
+         * @param {string} reportVersion Version of report for which the request is created. Supported versions for each report type are currently \&#39;reportVersion&#x3D;v1\&#39; for the following reportType(s): INVENTORY and \&#39;reportVersion&#x3D;v1\&#39;, \&#39;reportVersion&#x3D;v2\&#39; for the following reportType(s): ITEM.
          * @param {string} authorization Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
          * @param {string} wMSECACCESSTOKEN The access token retrieved in the Token API call
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
@@ -1439,14 +1439,14 @@ export interface OnRequestReportApiDownloadReportRequest {
  */
 export interface OnRequestReportApiGenerateReportRequest {
     /**
-     * Specifies the report type for the request.For example, reportType&#x3D;ITEM creates an Item Report.
+     * Specifies the report type for the request. For example, reportType&#x3D;ITEM creates an Item Report.
      * @type {'ITEM' | 'INVENTORY'}
      * @memberof OnRequestReportApiGenerateReport
      */
     readonly reportType: 'ITEM' | 'INVENTORY'
 
     /**
-     * Version of report for which the request is created. Supported versions for each report type are currently \&#39;reportVersion&#x3D;v1\&#39; for the following reportType(s): ITEM AND INVENTORY .
+     * Version of report for which the request is created. Supported versions for each report type are currently \&#39;reportVersion&#x3D;v1\&#39; for the following reportType(s): INVENTORY and \&#39;reportVersion&#x3D;v1\&#39;, \&#39;reportVersion&#x3D;v2\&#39; for the following reportType(s): ITEM.
      * @type {string}
      * @memberof OnRequestReportApiGenerateReport
      */

@@ -60,10 +60,10 @@ export interface Cause {
 export interface Elements {
     /**
      * 
-     * @type {Array<InlineResponse200ElementsInventories>}
+     * @type {Array<InlineResponse2001ElementsInventories>}
      * @memberof Elements
      */
-    inventories?: Array<InlineResponse200ElementsInventories>;
+    inventories?: Array<InlineResponse2001ElementsInventories>;
 }
 /**
  * 
@@ -104,10 +104,10 @@ export interface GetAllInventoriesDTO {
     sku?: string;
     /**
      * 
-     * @type {Array<InlineResponse200ElementsNodes>}
+     * @type {Array<InlineResponse2001ElementsNodes>}
      * @memberof GetAllInventoriesDTO
      */
-    nodes?: Array<InlineResponse200ElementsNodes>;
+    nodes?: Array<InlineResponse2001ElementsNodes>;
 }
 /**
  * 
@@ -123,16 +123,16 @@ export interface GetAllInventoriesNodeDTO {
     shipNode?: string;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {InlineResponse200Quantity}
      * @memberof GetAllInventoriesNodeDTO
      */
-    inputQty?: InlineResponse200ElementsInputQty;
+    inputQty?: InlineResponse200Quantity;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {InlineResponse200Quantity}
      * @memberof GetAllInventoriesNodeDTO
      */
-    availToSellQty?: InlineResponse200ElementsInputQty;
+    availToSellQty?: InlineResponse200Quantity;
 }
 /**
  * 
@@ -166,11 +166,17 @@ export interface Headers {
  */
 export interface InlineObject {
     /**
-     * 
-     * @type {V3InventoriesSkuInventories}
+     * A seller-provided Product ID. Response will have decoded value.
+     * @type {string}
      * @memberof InlineObject
      */
-    inventories: V3InventoriesSkuInventories;
+    sku: string;
+    /**
+     * 
+     * @type {InlineResponse200Quantity}
+     * @memberof InlineObject
+     */
+    quantity: InlineResponse200Quantity;
 }
 /**
  * 
@@ -179,17 +185,11 @@ export interface InlineObject {
  */
 export interface InlineObject1 {
     /**
-     * A seller-provided Product ID. Response will have decoded value.
-     * @type {string}
-     * @memberof InlineObject1
-     */
-    sku: string;
-    /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {V3InventoriesSkuInventories}
      * @memberof InlineObject1
      */
-    quantity: InlineResponse200ElementsInputQty;
+    inventories: V3InventoriesSkuInventories;
 }
 /**
  * 
@@ -198,17 +198,17 @@ export interface InlineObject1 {
  */
 export interface InlineResponse200 {
     /**
-     * 
-     * @type {InlineResponse200Meta}
+     * A seller-provided Product ID. Response will have decoded value.
+     * @type {string}
      * @memberof InlineResponse200
      */
-    meta?: InlineResponse200Meta;
+    sku: string;
     /**
      * 
-     * @type {InlineResponse200Elements}
+     * @type {InlineResponse200Quantity}
      * @memberof InlineResponse200
      */
-    elements?: InlineResponse200Elements;
+    quantity: InlineResponse200Quantity;
 }
 /**
  * 
@@ -217,155 +217,93 @@ export interface InlineResponse200 {
  */
 export interface InlineResponse2001 {
     /**
+     * 
+     * @type {InlineResponse2001Meta}
+     * @memberof InlineResponse2001
+     */
+    meta?: InlineResponse2001Meta;
+    /**
+     * 
+     * @type {InlineResponse2001Elements}
+     * @memberof InlineResponse2001
+     */
+    elements?: InlineResponse2001Elements;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2001Elements
+ */
+export interface InlineResponse2001Elements {
+    /**
+     * 
+     * @type {Array<InlineResponse2001ElementsInventories>}
+     * @memberof InlineResponse2001Elements
+     */
+    inventories?: Array<InlineResponse2001ElementsInventories>;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2001ElementsInventories
+ */
+export interface InlineResponse2001ElementsInventories {
+    /**
      * An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item.
      * @type {string}
-     * @memberof InlineResponse2001
+     * @memberof InlineResponse2001ElementsInventories
      */
     sku?: string;
     /**
      * 
-     * @type {Array<InlineResponse2001Nodes>}
-     * @memberof InlineResponse2001
+     * @type {Array<InlineResponse2001ElementsNodes>}
+     * @memberof InlineResponse2001ElementsInventories
      */
-    nodes?: Array<InlineResponse2001Nodes>;
+    nodes?: Array<InlineResponse2001ElementsNodes>;
 }
 /**
  * 
  * @export
- * @interface InlineResponse2001Causes
+ * @interface InlineResponse2001ElementsNodes
  */
-export interface InlineResponse2001Causes {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Causes
-     */
-    code?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Causes
-     */
-    field?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Causes
-     */
-    type?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Causes
-     */
-    description?: string;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2001Errors
- */
-export interface InlineResponse2001Errors {
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Errors
-     */
-    code: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Errors
-     */
-    field?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Errors
-     */
-    description?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Errors
-     */
-    info?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Errors
-     */
-    severity?: InlineResponse2001ErrorsSeverityEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof InlineResponse2001Errors
-     */
-    category?: InlineResponse2001ErrorsCategoryEnum;
-    /**
-     * 
-     * @type {Array<InlineResponse2001Causes>}
-     * @memberof InlineResponse2001Errors
-     */
-    causes?: Array<InlineResponse2001Causes>;
-    /**
-     * 
-     * @type {{ [key: string]: object; }}
-     * @memberof InlineResponse2001Errors
-     */
-    errorIdentifiers?: { [key: string]: object; };
-}
-
-/**
-    * @export
-    * @enum {string}
-    */
-export enum InlineResponse2001ErrorsSeverityEnum {
-    Info = 'INFO',
-    Warn = 'WARN',
-    Error = 'ERROR'
-}
-/**
-    * @export
-    * @enum {string}
-    */
-export enum InlineResponse2001ErrorsCategoryEnum {
-    Application = 'APPLICATION',
-    System = 'SYSTEM',
-    Request = 'REQUEST',
-    Data = 'DATA'
-}
-
-/**
- * 
- * @export
- * @interface InlineResponse2001Nodes
- */
-export interface InlineResponse2001Nodes {
+export interface InlineResponse2001ElementsNodes {
     /**
      * ShipNode Id of the ship node for which the inventory is requested
      * @type {string}
-     * @memberof InlineResponse2001Nodes
+     * @memberof InlineResponse2001ElementsNodes
      */
     shipNode?: string;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
-     * @memberof InlineResponse2001Nodes
+     * @type {InlineResponse200Quantity}
+     * @memberof InlineResponse2001ElementsNodes
      */
-    inputQty?: InlineResponse200ElementsInputQty;
+    inputQty?: InlineResponse200Quantity;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
-     * @memberof InlineResponse2001Nodes
+     * @type {InlineResponse200Quantity}
+     * @memberof InlineResponse2001ElementsNodes
      */
-    availToSellQty?: InlineResponse200ElementsInputQty;
+    availToSellQty?: InlineResponse200Quantity;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2001Meta
+ */
+export interface InlineResponse2001Meta {
     /**
-     * 
-     * @type {Array<InlineResponse2001Errors>}
-     * @memberof InlineResponse2001Nodes
+     * Total number of Skus of the Seller. Example: \'235\'
+     * @type {number}
+     * @memberof InlineResponse2001Meta
      */
-    errors?: Array<InlineResponse2001Errors>;
+    totalCount?: number;
+    /**
+     * Used for pagination to fetch the next set of items.
+     * @type {string}
+     * @memberof InlineResponse2001Meta
+     */
+    nextCursor?: string;
 }
 /**
  * 
@@ -389,6 +327,113 @@ export interface InlineResponse2002 {
 /**
  * 
  * @export
+ * @interface InlineResponse2002Causes
+ */
+export interface InlineResponse2002Causes {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Causes
+     */
+    code?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Causes
+     */
+    field?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Causes
+     */
+    type?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Causes
+     */
+    description?: string;
+}
+/**
+ * Node Update Error description.
+ * @export
+ * @interface InlineResponse2002Errors
+ */
+export interface InlineResponse2002Errors {
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Errors
+     */
+    code: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Errors
+     */
+    field?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Errors
+     */
+    description?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Errors
+     */
+    info?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Errors
+     */
+    severity?: InlineResponse2002ErrorsSeverityEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof InlineResponse2002Errors
+     */
+    category?: InlineResponse2002ErrorsCategoryEnum;
+    /**
+     * 
+     * @type {Array<InlineResponse2002Causes>}
+     * @memberof InlineResponse2002Errors
+     */
+    causes?: Array<InlineResponse2002Causes>;
+    /**
+     * 
+     * @type {{ [key: string]: object; }}
+     * @memberof InlineResponse2002Errors
+     */
+    errorIdentifiers?: { [key: string]: object; };
+}
+
+/**
+    * @export
+    * @enum {string}
+    */
+export enum InlineResponse2002ErrorsSeverityEnum {
+    Info = 'INFO',
+    Warn = 'WARN',
+    Error = 'ERROR'
+}
+/**
+    * @export
+    * @enum {string}
+    */
+export enum InlineResponse2002ErrorsCategoryEnum {
+    Application = 'APPLICATION',
+    System = 'SYSTEM',
+    Request = 'REQUEST',
+    Data = 'DATA'
+}
+
+/**
+ * 
+ * @export
  * @interface InlineResponse2002Nodes
  */
 export interface InlineResponse2002Nodes {
@@ -399,17 +444,23 @@ export interface InlineResponse2002Nodes {
      */
     shipNode?: string;
     /**
-     * Node Update status. Example: \'Success\'
-     * @type {string}
+     * 
+     * @type {InlineResponse200Quantity}
      * @memberof InlineResponse2002Nodes
      */
-    status?: string;
+    inputQty?: InlineResponse200Quantity;
     /**
-     * Node Update Error description.
-     * @type {Array<InlineResponse2001Errors>}
+     * 
+     * @type {InlineResponse200Quantity}
      * @memberof InlineResponse2002Nodes
      */
-    errors?: Array<InlineResponse2001Errors>;
+    availToSellQty?: InlineResponse200Quantity;
+    /**
+     * 
+     * @type {Array<InlineResponse2002Errors>}
+     * @memberof InlineResponse2002Nodes
+     */
+    errors?: Array<InlineResponse2002Errors>;
 }
 /**
  * 
@@ -418,105 +469,42 @@ export interface InlineResponse2002Nodes {
  */
 export interface InlineResponse2003 {
     /**
-     * 
-     * @type {InlineResponse2003Headers}
-     * @memberof InlineResponse2003
-     */
-    headers?: InlineResponse2003Headers;
-    /**
-     * 
-     * @type {InlineResponse2003Payload}
-     * @memberof InlineResponse2003
-     */
-    payload?: InlineResponse2003Payload;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2003Headers
- */
-export interface InlineResponse2003Headers {
-    /**
-     * Total number of results for query.
-     * @type {number}
-     * @memberof InlineResponse2003Headers
-     */
-    totalCount?: number;
-    /**
-     * Information about the quantity in inventory
-     * @type {number}
-     * @memberof InlineResponse2003Headers
-     */
-    limit?: number;
-    /**
-     * Offset is the number of records you wish to skip before selecting results.
-     * @type {number}
-     * @memberof InlineResponse2003Headers
-     */
-    offset?: number;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2003Payload
- */
-export interface InlineResponse2003Payload {
-    /**
-     * 
-     * @type {Array<InlineResponse2003PayloadInventory>}
-     * @memberof InlineResponse2003Payload
-     */
-    inventory?: Array<InlineResponse2003PayloadInventory>;
-}
-/**
- * 
- * @export
- * @interface InlineResponse2003PayloadInventory
- */
-export interface InlineResponse2003PayloadInventory {
-    /**
      * An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item.
      * @type {string}
-     * @memberof InlineResponse2003PayloadInventory
+     * @memberof InlineResponse2003
      */
     sku?: string;
     /**
      * 
-     * @type {Array<InlineResponse2003PayloadShipNodes>}
-     * @memberof InlineResponse2003PayloadInventory
+     * @type {Array<InlineResponse2003Nodes>}
+     * @memberof InlineResponse2003
      */
-    shipNodes?: Array<InlineResponse2003PayloadShipNodes>;
+    nodes?: Array<InlineResponse2003Nodes>;
 }
 /**
  * 
  * @export
- * @interface InlineResponse2003PayloadShipNodes
+ * @interface InlineResponse2003Nodes
  */
-export interface InlineResponse2003PayloadShipNodes {
+export interface InlineResponse2003Nodes {
     /**
-     * Last changes date for the item.
+     * ShipNode Id of the ship node for which the inventory is requested
      * @type {string}
-     * @memberof InlineResponse2003PayloadShipNodes
+     * @memberof InlineResponse2003Nodes
      */
-    modifiedDate?: string;
+    shipNode?: string;
     /**
-     * The available quantity is the quantity of an item that is available to be allocated to orders.
-     * @type {number}
-     * @memberof InlineResponse2003PayloadShipNodes
-     */
-    availToSellQty?: number;
-    /**
-     * The on-hand balance is the quantity of active inventory stored at the warehouse.Active inventory is defined as the usable amount of an item that is in the warehouse.Inventory is active if it is not damaged, expired or being inspected.
-     * @type {number}
-     * @memberof InlineResponse2003PayloadShipNodes
-     */
-    onHandQty?: number;
-    /**
-     * Identifies fulfillment aspect of invetory. Walmart, seller or 3PL fulfilled. Possible value is \'WFSFulfilled\'. In later phase we will also add seller fulfilled inventory.
+     * Node Update status. Example: \'Success\'
      * @type {string}
-     * @memberof InlineResponse2003PayloadShipNodes
+     * @memberof InlineResponse2003Nodes
      */
-    shipNodeType?: string;
+    status?: string;
+    /**
+     * Node Update Error description.
+     * @type {Array<InlineResponse2002Errors>}
+     * @memberof InlineResponse2003Nodes
+     */
+    errors?: Array<InlineResponse2002Errors>;
 }
 /**
  * 
@@ -525,17 +513,105 @@ export interface InlineResponse2003PayloadShipNodes {
  */
 export interface InlineResponse2004 {
     /**
-     * A seller-provided Product ID. Response will have decoded value.
-     * @type {string}
+     * 
+     * @type {InlineResponse2004Headers}
      * @memberof InlineResponse2004
      */
-    sku: string;
+    headers?: InlineResponse2004Headers;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {InlineResponse2004Payload}
      * @memberof InlineResponse2004
      */
-    quantity: InlineResponse200ElementsInputQty;
+    payload?: InlineResponse2004Payload;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2004Headers
+ */
+export interface InlineResponse2004Headers {
+    /**
+     * Total number of results for query.
+     * @type {number}
+     * @memberof InlineResponse2004Headers
+     */
+    totalCount?: number;
+    /**
+     * Information about the quantity in inventory
+     * @type {number}
+     * @memberof InlineResponse2004Headers
+     */
+    limit?: number;
+    /**
+     * Offset is the number of records you wish to skip before selecting results.
+     * @type {number}
+     * @memberof InlineResponse2004Headers
+     */
+    offset?: number;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2004Payload
+ */
+export interface InlineResponse2004Payload {
+    /**
+     * 
+     * @type {Array<InlineResponse2004PayloadInventory>}
+     * @memberof InlineResponse2004Payload
+     */
+    inventory?: Array<InlineResponse2004PayloadInventory>;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2004PayloadInventory
+ */
+export interface InlineResponse2004PayloadInventory {
+    /**
+     * An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item.
+     * @type {string}
+     * @memberof InlineResponse2004PayloadInventory
+     */
+    sku?: string;
+    /**
+     * 
+     * @type {Array<InlineResponse2004PayloadShipNodes>}
+     * @memberof InlineResponse2004PayloadInventory
+     */
+    shipNodes?: Array<InlineResponse2004PayloadShipNodes>;
+}
+/**
+ * 
+ * @export
+ * @interface InlineResponse2004PayloadShipNodes
+ */
+export interface InlineResponse2004PayloadShipNodes {
+    /**
+     * Last changes date for the item.
+     * @type {string}
+     * @memberof InlineResponse2004PayloadShipNodes
+     */
+    modifiedDate?: string;
+    /**
+     * The available quantity is the quantity of an item that is available to be allocated to orders.
+     * @type {number}
+     * @memberof InlineResponse2004PayloadShipNodes
+     */
+    availToSellQty?: number;
+    /**
+     * The on-hand balance is the quantity of active inventory stored at the warehouse.Active inventory is defined as the usable amount of an item that is in the warehouse.Inventory is active if it is not damaged, expired or being inspected.
+     * @type {number}
+     * @memberof InlineResponse2004PayloadShipNodes
+     */
+    onHandQty?: number;
+    /**
+     * Identifies fulfillment aspect of invetory. Walmart, seller or 3PL fulfilled. Possible value is \'WFSFulfilled\'. In later phase we will also add seller fulfilled inventory.
+     * @type {string}
+     * @memberof InlineResponse2004PayloadShipNodes
+     */
+    shipNodeType?: string;
 }
 /**
  * 
@@ -565,32 +641,19 @@ export interface InlineResponse2005 {
 /**
  * 
  * @export
- * @interface InlineResponse200Elements
+ * @interface InlineResponse200Quantity
  */
-export interface InlineResponse200Elements {
-    /**
-     * 
-     * @type {Array<InlineResponse200ElementsInventories>}
-     * @memberof InlineResponse200Elements
-     */
-    inventories?: Array<InlineResponse200ElementsInventories>;
-}
-/**
- * Information about the quantity in inventory
- * @export
- * @interface InlineResponse200ElementsInputQty
- */
-export interface InlineResponse200ElementsInputQty {
+export interface InlineResponse200Quantity {
     /**
      * The unit of measurement. Example: \'EACH\'
      * @type {string}
-     * @memberof InlineResponse200ElementsInputQty
+     * @memberof InlineResponse200Quantity
      */
-    unit: InlineResponse200ElementsInputQtyUnitEnum;
+    unit: InlineResponse200QuantityUnitEnum;
     /**
      * The number available in the inventory
      * @type {number}
-     * @memberof InlineResponse200ElementsInputQty
+     * @memberof InlineResponse200Quantity
      */
     amount: number;
 }
@@ -599,73 +662,10 @@ export interface InlineResponse200ElementsInputQty {
     * @export
     * @enum {string}
     */
-export enum InlineResponse200ElementsInputQtyUnitEnum {
+export enum InlineResponse200QuantityUnitEnum {
     Each = 'EACH'
 }
 
-/**
- * 
- * @export
- * @interface InlineResponse200ElementsInventories
- */
-export interface InlineResponse200ElementsInventories {
-    /**
-     * An arbitrary alphanumeric unique ID, specified by the seller, which identifies each item.
-     * @type {string}
-     * @memberof InlineResponse200ElementsInventories
-     */
-    sku?: string;
-    /**
-     * 
-     * @type {Array<InlineResponse200ElementsNodes>}
-     * @memberof InlineResponse200ElementsInventories
-     */
-    nodes?: Array<InlineResponse200ElementsNodes>;
-}
-/**
- * 
- * @export
- * @interface InlineResponse200ElementsNodes
- */
-export interface InlineResponse200ElementsNodes {
-    /**
-     * ShipNode Id of the ship node for which the inventory is requested
-     * @type {string}
-     * @memberof InlineResponse200ElementsNodes
-     */
-    shipNode?: string;
-    /**
-     * 
-     * @type {InlineResponse200ElementsInputQty}
-     * @memberof InlineResponse200ElementsNodes
-     */
-    inputQty?: InlineResponse200ElementsInputQty;
-    /**
-     * 
-     * @type {InlineResponse200ElementsInputQty}
-     * @memberof InlineResponse200ElementsNodes
-     */
-    availToSellQty?: InlineResponse200ElementsInputQty;
-}
-/**
- * 
- * @export
- * @interface InlineResponse200Meta
- */
-export interface InlineResponse200Meta {
-    /**
-     * Total number of Skus of the Seller. Example: \'235\'
-     * @type {number}
-     * @memberof InlineResponse200Meta
-     */
-    totalCount?: number;
-    /**
-     * Used for pagination to fetch the next set of items.
-     * @type {string}
-     * @memberof InlineResponse200Meta
-     */
-    nextCursor?: string;
-}
 /**
  * 
  * @export
@@ -680,10 +680,10 @@ export interface InventoriesDTO {
     sku?: string;
     /**
      * 
-     * @type {Array<InlineResponse2001Nodes>}
+     * @type {Array<InlineResponse2002Nodes>}
      * @memberof InventoriesDTO
      */
-    nodes?: Array<InlineResponse2001Nodes>;
+    nodes?: Array<InlineResponse2002Nodes>;
 }
 /**
  * 
@@ -699,10 +699,10 @@ export interface Inventory {
     sku: string;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {InlineResponse200Quantity}
      * @memberof Inventory
      */
-    quantity: InlineResponse200ElementsInputQty;
+    quantity: InlineResponse200Quantity;
 }
 /**
  * 
@@ -718,10 +718,10 @@ export interface InventoryWFS {
     sku?: string;
     /**
      * 
-     * @type {Array<InlineResponse2003PayloadShipNodes>}
+     * @type {Array<InlineResponse2004PayloadShipNodes>}
      * @memberof InventoryWFS
      */
-    shipNodes?: Array<InlineResponse2003PayloadShipNodes>;
+    shipNodes?: Array<InlineResponse2004PayloadShipNodes>;
 }
 /**
  * 
@@ -743,7 +743,7 @@ export interface Meta {
     nextCursor?: string;
 }
 /**
- * 
+ * Node Update Error description.
  * @export
  * @interface ModelError
  */
@@ -786,10 +786,10 @@ export interface ModelError {
     category?: ModelErrorCategoryEnum;
     /**
      * 
-     * @type {Array<InlineResponse2001Causes>}
+     * @type {Array<InlineResponse2002Causes>}
      * @memberof ModelError
      */
-    causes?: Array<InlineResponse2001Causes>;
+    causes?: Array<InlineResponse2002Causes>;
     /**
      * 
      * @type {{ [key: string]: object; }}
@@ -826,16 +826,16 @@ export enum ModelErrorCategoryEnum {
 export interface MultiNodeInventoryFetchResponseDTO {
     /**
      * 
-     * @type {InlineResponse200Meta}
+     * @type {InlineResponse2001Meta}
      * @memberof MultiNodeInventoryFetchResponseDTO
      */
-    meta?: InlineResponse200Meta;
+    meta?: InlineResponse2001Meta;
     /**
      * 
-     * @type {InlineResponse200Elements}
+     * @type {InlineResponse2001Elements}
      * @memberof MultiNodeInventoryFetchResponseDTO
      */
-    elements?: InlineResponse200Elements;
+    elements?: InlineResponse2001Elements;
 }
 /**
  * 
@@ -864,10 +864,10 @@ export interface MultiNodeInventoryUpdateResponseDTO {
     sku?: string;
     /**
      * 
-     * @type {Array<InlineResponse2002Nodes>}
+     * @type {Array<InlineResponse2003Nodes>}
      * @memberof MultiNodeInventoryUpdateResponseDTO
      */
-    nodes?: Array<InlineResponse2002Nodes>;
+    nodes?: Array<InlineResponse2003Nodes>;
 }
 /**
  * 
@@ -883,22 +883,22 @@ export interface NodeDTO {
     shipNode?: string;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {InlineResponse200Quantity}
      * @memberof NodeDTO
      */
-    inputQty?: InlineResponse200ElementsInputQty;
+    inputQty?: InlineResponse200Quantity;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {InlineResponse200Quantity}
      * @memberof NodeDTO
      */
-    availToSellQty?: InlineResponse200ElementsInputQty;
+    availToSellQty?: InlineResponse200Quantity;
     /**
      * 
-     * @type {Array<InlineResponse2001Errors>}
+     * @type {Array<InlineResponse2002Errors>}
      * @memberof NodeDTO
      */
-    errors?: Array<InlineResponse2001Errors>;
+    errors?: Array<InlineResponse2002Errors>;
 }
 /**
  * 
@@ -908,10 +908,10 @@ export interface NodeDTO {
 export interface Payload {
     /**
      * 
-     * @type {Array<InlineResponse2003PayloadInventory>}
+     * @type {Array<InlineResponse2004PayloadInventory>}
      * @memberof Payload
      */
-    inventory?: Array<InlineResponse2003PayloadInventory>;
+    inventory?: Array<InlineResponse2004PayloadInventory>;
 }
 /**
  * 
@@ -945,7 +945,7 @@ export interface ShipNodes {
     shipNodeType?: string;
 }
 /**
- * Information about the quantity in inventory
+ * 
  * @export
  * @interface SupplyQuantity
  */
@@ -999,10 +999,10 @@ export interface UpdateInventoriesRequestNodeDTO {
     shipNode: string;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {InlineResponse200Quantity}
      * @memberof UpdateInventoriesRequestNodeDTO
      */
-    inputQty: InlineResponse200ElementsInputQty;
+    inputQty: InlineResponse200Quantity;
 }
 /**
  * 
@@ -1024,10 +1024,10 @@ export interface UpdateInventoriesResponseNodeDTO {
     status?: string;
     /**
      * Node Update Error description.
-     * @type {Array<InlineResponse2001Errors>}
+     * @type {Array<InlineResponse2002Errors>}
      * @memberof UpdateInventoriesResponseNodeDTO
      */
-    errors?: Array<InlineResponse2001Errors>;
+    errors?: Array<InlineResponse2002Errors>;
 }
 /**
  * 
@@ -1056,10 +1056,10 @@ export interface V3InventoriesSkuInventoriesNodes {
     shipNode: string;
     /**
      * 
-     * @type {InlineResponse200ElementsInputQty}
+     * @type {InlineResponse200Quantity}
      * @memberof V3InventoriesSkuInventoriesNodes
      */
-    inputQty: InlineResponse200ElementsInputQty;
+    inputQty: InlineResponse200Quantity;
 }
 /**
  * 
@@ -1069,16 +1069,16 @@ export interface V3InventoriesSkuInventoriesNodes {
 export interface WfsInventoryDTO {
     /**
      * 
-     * @type {InlineResponse2003Headers}
+     * @type {InlineResponse2004Headers}
      * @memberof WfsInventoryDTO
      */
-    headers?: InlineResponse2003Headers;
+    headers?: InlineResponse2004Headers;
     /**
      * 
-     * @type {InlineResponse2003Payload}
+     * @type {InlineResponse2004Payload}
      * @memberof WfsInventoryDTO
      */
-    payload?: InlineResponse2003Payload;
+    payload?: InlineResponse2004Payload;
 }
 
 /**
@@ -1420,20 +1420,20 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * Updates inventory for items in bulk. Refer to the throttling limits before uploading the Feed files.
+         * Updates inventory for items in bulk.  Seller Can either use feed type \"inventory\" or \"MP_INVENTORY\"  * Inventory spec 1.4 feed type: inventory  * Inventory spec 1.5 feed type: MP_INVENTORY   Please Note: Multi Node Inventory Update Feed (feedType=MP_INVENTORY) only supports JSON Request and Responses. Refer to \"MultiNode_Bulk_Inventory_Update_Request.json\" for the corresponding request sample    Refer to the <a href=\"https://developer.walmart.com/doc/us/us-mp/us-mp-inventory/\">guide section</a> for more detailed guide around each of the feed types    Refer to the throttling limits before uploading the Feed Files.
          * @summary Bulk Item Inventory Update
-         * @param {string} feedType Includes details of each entity in the feed. Do not set this parameter to true.
+         * @param {'inventory' | 'MP_INVENTORY'} feedType The feed Type
          * @param {string} authorization Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
          * @param {string} wMSECACCESSTOKEN The access token retrieved in the Token API call
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {string} [shipNode] The shipNode for which the inventory is to be updated.
+         * @param {string} [shipNode] The shipNode for which the inventory is to be updated. Not required in case of Multi Node Inventory Update Feed (feedType&#x3D;MP_INVENTORY)
          * @param {any} [file] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateBulkInventory: async (feedType: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, file?: any, options: any = {}): Promise<RequestArgs> => {
+        updateBulkInventory: async (feedType: 'inventory' | 'MP_INVENTORY', authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, file?: any, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'feedType' is not null or undefined
             assertParamExists('updateBulkInventory', 'feedType', feedType)
             // verify required parameter 'authorization' is not null or undefined
@@ -1498,11 +1498,10 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
     
     
             localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
-            localVarHeaderParameter['Accept'] = 'application/json';
     
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers, ...localVarFormParams.getHeaders()};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
             localVarRequestOptions.data = localVarFormParams;
 
             return {
@@ -1519,12 +1518,12 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {InlineObject1} inlineObject1 
+         * @param {InlineObject} inlineObject 
          * @param {string} [shipNode] The shipNode for which the inventory is to be updated.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateInventoryForAnItem: async (sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject1: InlineObject1, shipNode?: string, options: any = {}): Promise<RequestArgs> => {
+        updateInventoryForAnItem: async (sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject: InlineObject, shipNode?: string, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'sku' is not null or undefined
             assertParamExists('updateInventoryForAnItem', 'sku', sku)
             // verify required parameter 'authorization' is not null or undefined
@@ -1537,8 +1536,8 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
             assertParamExists('updateInventoryForAnItem', 'wMQOSCORRELATIONID', wMQOSCORRELATIONID)
             // verify required parameter 'wMSVCNAME' is not null or undefined
             assertParamExists('updateInventoryForAnItem', 'wMSVCNAME', wMSVCNAME)
-            // verify required parameter 'inlineObject1' is not null or undefined
-            assertParamExists('updateInventoryForAnItem', 'inlineObject1', inlineObject1)
+            // verify required parameter 'inlineObject' is not null or undefined
+            assertParamExists('updateInventoryForAnItem', 'inlineObject', inlineObject)
             const localVarPath = `/v3/inventory`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -1590,7 +1589,7 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject1, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1606,11 +1605,11 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {InlineObject} inlineObject 
+         * @param {InlineObject1} inlineObject1 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMultiNodeInventory: async (sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject: InlineObject, options: any = {}): Promise<RequestArgs> => {
+        updateMultiNodeInventory: async (sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject1: InlineObject1, options: any = {}): Promise<RequestArgs> => {
             // verify required parameter 'sku' is not null or undefined
             assertParamExists('updateMultiNodeInventory', 'sku', sku)
             // verify required parameter 'authorization' is not null or undefined
@@ -1623,8 +1622,8 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
             assertParamExists('updateMultiNodeInventory', 'wMQOSCORRELATIONID', wMQOSCORRELATIONID)
             // verify required parameter 'wMSVCNAME' is not null or undefined
             assertParamExists('updateMultiNodeInventory', 'wMSVCNAME', wMSVCNAME)
-            // verify required parameter 'inlineObject' is not null or undefined
-            assertParamExists('updateMultiNodeInventory', 'inlineObject', inlineObject)
+            // verify required parameter 'inlineObject1' is not null or undefined
+            assertParamExists('updateMultiNodeInventory', 'inlineObject1', inlineObject1)
             const localVarPath = `/v3/inventories/{sku}`
                 .replace(`{${"sku"}}`, encodeURIComponent(String(sku)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -1669,7 +1668,7 @@ export const InventoryApiAxiosParamCreator = function (configuration?: Configura
             setSearchParams(localVarUrlObj, localVarQueryParameter, options.query);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(inlineObject1, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -1699,7 +1698,7 @@ export const InventoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getInventory(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2004>> {
+        async getInventory(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getInventory(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, shipNode, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1716,7 +1715,7 @@ export const InventoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMultiNodeInventoryForAllSkuAndAllShipNodes(authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, limit?: string, nextCursor?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse200>> {
+        async getMultiNodeInventoryForAllSkuAndAllShipNodes(authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, limit?: string, nextCursor?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2001>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMultiNodeInventoryForAllSkuAndAllShipNodes(authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, limit, nextCursor, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1733,7 +1732,7 @@ export const InventoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getMultiNodeInventoryForSkuAndAllShipnodes(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2001>> {
+        async getMultiNodeInventoryForSkuAndAllShipnodes(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2002>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getMultiNodeInventoryForSkuAndAllShipnodes(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, shipNode, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1753,25 +1752,25 @@ export const InventoryApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getWFSInventory(authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, sku?: string, fromModifiedDate?: string, toModifiedDate?: string, limit?: string, offset?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2003>> {
+        async getWFSInventory(authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, sku?: string, fromModifiedDate?: string, toModifiedDate?: string, limit?: string, offset?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2004>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.getWFSInventory(authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, sku, fromModifiedDate, toModifiedDate, limit, offset, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
-         * Updates inventory for items in bulk. Refer to the throttling limits before uploading the Feed files.
+         * Updates inventory for items in bulk.  Seller Can either use feed type \"inventory\" or \"MP_INVENTORY\"  * Inventory spec 1.4 feed type: inventory  * Inventory spec 1.5 feed type: MP_INVENTORY   Please Note: Multi Node Inventory Update Feed (feedType=MP_INVENTORY) only supports JSON Request and Responses. Refer to \"MultiNode_Bulk_Inventory_Update_Request.json\" for the corresponding request sample    Refer to the <a href=\"https://developer.walmart.com/doc/us/us-mp/us-mp-inventory/\">guide section</a> for more detailed guide around each of the feed types    Refer to the throttling limits before uploading the Feed Files.
          * @summary Bulk Item Inventory Update
-         * @param {string} feedType Includes details of each entity in the feed. Do not set this parameter to true.
+         * @param {'inventory' | 'MP_INVENTORY'} feedType The feed Type
          * @param {string} authorization Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
          * @param {string} wMSECACCESSTOKEN The access token retrieved in the Token API call
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {string} [shipNode] The shipNode for which the inventory is to be updated.
+         * @param {string} [shipNode] The shipNode for which the inventory is to be updated. Not required in case of Multi Node Inventory Update Feed (feedType&#x3D;MP_INVENTORY)
          * @param {any} [file] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateBulkInventory(feedType: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, file?: any, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2005>> {
+        async updateBulkInventory(feedType: 'inventory' | 'MP_INVENTORY', authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, file?: any, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2005>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.updateBulkInventory(feedType, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, shipNode, file, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
@@ -1784,13 +1783,13 @@ export const InventoryApiFp = function(configuration?: Configuration) {
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {InlineObject1} inlineObject1 
+         * @param {InlineObject} inlineObject 
          * @param {string} [shipNode] The shipNode for which the inventory is to be updated.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateInventoryForAnItem(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject1: InlineObject1, shipNode?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineObject1>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateInventoryForAnItem(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, inlineObject1, shipNode, options);
+        async updateInventoryForAnItem(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject: InlineObject, shipNode?: string, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineObject>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateInventoryForAnItem(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, inlineObject, shipNode, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
         /**
@@ -1802,12 +1801,12 @@ export const InventoryApiFp = function(configuration?: Configuration) {
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {InlineObject} inlineObject 
+         * @param {InlineObject1} inlineObject1 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async updateMultiNodeInventory(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject: InlineObject, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2002>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMultiNodeInventory(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, inlineObject, options);
+        async updateMultiNodeInventory(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject1: InlineObject1, options?: any): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<InlineResponse2003>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.updateMultiNodeInventory(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, inlineObject1, options);
             return createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration);
         },
     }
@@ -1833,7 +1832,7 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getInventory(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, options?: any): AxiosPromise<InlineResponse2004> {
+        getInventory(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, options?: any): AxiosPromise<InlineResponse200> {
             return localVarFp.getInventory(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, shipNode, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1849,7 +1848,7 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMultiNodeInventoryForAllSkuAndAllShipNodes(authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, limit?: string, nextCursor?: string, options?: any): AxiosPromise<InlineResponse200> {
+        getMultiNodeInventoryForAllSkuAndAllShipNodes(authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, limit?: string, nextCursor?: string, options?: any): AxiosPromise<InlineResponse2001> {
             return localVarFp.getMultiNodeInventoryForAllSkuAndAllShipNodes(authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, limit, nextCursor, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1865,7 +1864,7 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getMultiNodeInventoryForSkuAndAllShipnodes(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, options?: any): AxiosPromise<InlineResponse2001> {
+        getMultiNodeInventoryForSkuAndAllShipnodes(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, options?: any): AxiosPromise<InlineResponse2002> {
             return localVarFp.getMultiNodeInventoryForSkuAndAllShipnodes(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, shipNode, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1884,24 +1883,24 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getWFSInventory(authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, sku?: string, fromModifiedDate?: string, toModifiedDate?: string, limit?: string, offset?: string, options?: any): AxiosPromise<InlineResponse2003> {
+        getWFSInventory(authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, sku?: string, fromModifiedDate?: string, toModifiedDate?: string, limit?: string, offset?: string, options?: any): AxiosPromise<InlineResponse2004> {
             return localVarFp.getWFSInventory(authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, sku, fromModifiedDate, toModifiedDate, limit, offset, options).then((request) => request(axios, basePath));
         },
         /**
-         * Updates inventory for items in bulk. Refer to the throttling limits before uploading the Feed files.
+         * Updates inventory for items in bulk.  Seller Can either use feed type \"inventory\" or \"MP_INVENTORY\"  * Inventory spec 1.4 feed type: inventory  * Inventory spec 1.5 feed type: MP_INVENTORY   Please Note: Multi Node Inventory Update Feed (feedType=MP_INVENTORY) only supports JSON Request and Responses. Refer to \"MultiNode_Bulk_Inventory_Update_Request.json\" for the corresponding request sample    Refer to the <a href=\"https://developer.walmart.com/doc/us/us-mp/us-mp-inventory/\">guide section</a> for more detailed guide around each of the feed types    Refer to the throttling limits before uploading the Feed Files.
          * @summary Bulk Item Inventory Update
-         * @param {string} feedType Includes details of each entity in the feed. Do not set this parameter to true.
+         * @param {'inventory' | 'MP_INVENTORY'} feedType The feed Type
          * @param {string} authorization Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
          * @param {string} wMSECACCESSTOKEN The access token retrieved in the Token API call
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {string} [shipNode] The shipNode for which the inventory is to be updated.
+         * @param {string} [shipNode] The shipNode for which the inventory is to be updated. Not required in case of Multi Node Inventory Update Feed (feedType&#x3D;MP_INVENTORY)
          * @param {any} [file] 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateBulkInventory(feedType: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, file?: any, options?: any): AxiosPromise<InlineResponse2005> {
+        updateBulkInventory(feedType: 'inventory' | 'MP_INVENTORY', authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, shipNode?: string, file?: any, options?: any): AxiosPromise<InlineResponse2005> {
             return localVarFp.updateBulkInventory(feedType, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, shipNode, file, options).then((request) => request(axios, basePath));
         },
         /**
@@ -1913,13 +1912,13 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {InlineObject1} inlineObject1 
+         * @param {InlineObject} inlineObject 
          * @param {string} [shipNode] The shipNode for which the inventory is to be updated.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateInventoryForAnItem(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject1: InlineObject1, shipNode?: string, options?: any): AxiosPromise<InlineObject1> {
-            return localVarFp.updateInventoryForAnItem(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, inlineObject1, shipNode, options).then((request) => request(axios, basePath));
+        updateInventoryForAnItem(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject: InlineObject, shipNode?: string, options?: any): AxiosPromise<InlineObject> {
+            return localVarFp.updateInventoryForAnItem(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, inlineObject, shipNode, options).then((request) => request(axios, basePath));
         },
         /**
          * This API will update the inventory for an item across one or more fulfillment centers, known as ship nodes.
@@ -1930,12 +1929,12 @@ export const InventoryApiFactory = function (configuration?: Configuration, base
          * @param {string} wMCONSUMERCHANNELTYPE A unique ID to track the consumer request by channel. Use the Consumer Channel Type received during onboarding
          * @param {string} wMQOSCORRELATIONID A unique ID which identifies each API call and used to track and debug issues; use a random generated GUID for this ID
          * @param {string} wMSVCNAME Walmart Service Name
-         * @param {InlineObject} inlineObject 
+         * @param {InlineObject1} inlineObject1 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        updateMultiNodeInventory(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject: InlineObject, options?: any): AxiosPromise<InlineResponse2002> {
-            return localVarFp.updateMultiNodeInventory(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, inlineObject, options).then((request) => request(axios, basePath));
+        updateMultiNodeInventory(sku: string, authorization: string, wMSECACCESSTOKEN: string, wMCONSUMERCHANNELTYPE: string, wMQOSCORRELATIONID: string, wMSVCNAME: string, inlineObject1: InlineObject1, options?: any): AxiosPromise<InlineResponse2003> {
+            return localVarFp.updateMultiNodeInventory(sku, authorization, wMSECACCESSTOKEN, wMCONSUMERCHANNELTYPE, wMQOSCORRELATIONID, wMSVCNAME, inlineObject1, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -2192,11 +2191,11 @@ export interface InventoryApiGetWFSInventoryRequest {
  */
 export interface InventoryApiUpdateBulkInventoryRequest {
     /**
-     * Includes details of each entity in the feed. Do not set this parameter to true.
-     * @type {string}
+     * The feed Type
+     * @type {'inventory' | 'MP_INVENTORY'}
      * @memberof InventoryApiUpdateBulkInventory
      */
-    readonly feedType: string
+    readonly feedType: 'inventory' | 'MP_INVENTORY'
 
     /**
      * Basic authorization header. Base 64 encodes the Client ID and Client Secret retrieved in step two of the integration steps.
@@ -2234,7 +2233,7 @@ export interface InventoryApiUpdateBulkInventoryRequest {
     readonly wMSVCNAME: string
 
     /**
-     * The shipNode for which the inventory is to be updated.
+     * The shipNode for which the inventory is to be updated. Not required in case of Multi Node Inventory Update Feed (feedType&#x3D;MP_INVENTORY)
      * @type {string}
      * @memberof InventoryApiUpdateBulkInventory
      */
@@ -2298,10 +2297,10 @@ export interface InventoryApiUpdateInventoryForAnItemRequest {
 
     /**
      * 
-     * @type {InlineObject1}
+     * @type {InlineObject}
      * @memberof InventoryApiUpdateInventoryForAnItem
      */
-    readonly inlineObject1: InlineObject1
+    readonly inlineObject: InlineObject
 
     /**
      * The shipNode for which the inventory is to be updated.
@@ -2361,10 +2360,10 @@ export interface InventoryApiUpdateMultiNodeInventoryRequest {
 
     /**
      * 
-     * @type {InlineObject}
+     * @type {InlineObject1}
      * @memberof InventoryApiUpdateMultiNodeInventory
      */
-    readonly inlineObject: InlineObject
+    readonly inlineObject1: InlineObject1
 }
 
 /**
@@ -2423,7 +2422,7 @@ export class InventoryApi extends BaseAPI {
     }
 
     /**
-     * Updates inventory for items in bulk. Refer to the throttling limits before uploading the Feed files.
+     * Updates inventory for items in bulk.  Seller Can either use feed type \"inventory\" or \"MP_INVENTORY\"  * Inventory spec 1.4 feed type: inventory  * Inventory spec 1.5 feed type: MP_INVENTORY   Please Note: Multi Node Inventory Update Feed (feedType=MP_INVENTORY) only supports JSON Request and Responses. Refer to \"MultiNode_Bulk_Inventory_Update_Request.json\" for the corresponding request sample    Refer to the <a href=\"https://developer.walmart.com/doc/us/us-mp/us-mp-inventory/\">guide section</a> for more detailed guide around each of the feed types    Refer to the throttling limits before uploading the Feed Files.
      * @summary Bulk Item Inventory Update
      * @param {InventoryApiUpdateBulkInventoryRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -2443,7 +2442,7 @@ export class InventoryApi extends BaseAPI {
      * @memberof InventoryApi
      */
     public updateInventoryForAnItem(requestParameters: InventoryApiUpdateInventoryForAnItemRequest, options?: any) {
-        return InventoryApiFp(this.configuration).updateInventoryForAnItem(requestParameters.sku, requestParameters.authorization, requestParameters.wMSECACCESSTOKEN, requestParameters.wMCONSUMERCHANNELTYPE, requestParameters.wMQOSCORRELATIONID, requestParameters.wMSVCNAME, requestParameters.inlineObject1, requestParameters.shipNode, options).then((request) => request(this.axios, this.basePath));
+        return InventoryApiFp(this.configuration).updateInventoryForAnItem(requestParameters.sku, requestParameters.authorization, requestParameters.wMSECACCESSTOKEN, requestParameters.wMCONSUMERCHANNELTYPE, requestParameters.wMQOSCORRELATIONID, requestParameters.wMSVCNAME, requestParameters.inlineObject, requestParameters.shipNode, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -2455,7 +2454,7 @@ export class InventoryApi extends BaseAPI {
      * @memberof InventoryApi
      */
     public updateMultiNodeInventory(requestParameters: InventoryApiUpdateMultiNodeInventoryRequest, options?: any) {
-        return InventoryApiFp(this.configuration).updateMultiNodeInventory(requestParameters.sku, requestParameters.authorization, requestParameters.wMSECACCESSTOKEN, requestParameters.wMCONSUMERCHANNELTYPE, requestParameters.wMQOSCORRELATIONID, requestParameters.wMSVCNAME, requestParameters.inlineObject, options).then((request) => request(this.axios, this.basePath));
+        return InventoryApiFp(this.configuration).updateMultiNodeInventory(requestParameters.sku, requestParameters.authorization, requestParameters.wMSECACCESSTOKEN, requestParameters.wMCONSUMERCHANNELTYPE, requestParameters.wMQOSCORRELATIONID, requestParameters.wMSVCNAME, requestParameters.inlineObject1, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

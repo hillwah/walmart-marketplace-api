@@ -1424,6 +1424,99 @@
         },
         "description": "Authentication details for accessing the destination URL, if URL is protected"
       },
+      "Events": {
+        "type": "object",
+        "properties": {
+          "events": {
+            "type": "array",
+            "description": "List of events",
+            "items": {
+              "type": "object",
+              "properties": {
+                "event": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "eventType": {
+                        "type": "string",
+                        "description": "Event for which the subscription is created"
+                      },
+                      "subscriptionId": {
+                        "type": "string",
+                        "description": "Unique ID for the subscription that can be used for fetching details, editing or deleting the subscription"
+                      },
+                      "partnerId": {
+                        "type": "string",
+                        "description": "Partner ID of the seller who created the subscription"
+                      },
+                      "eventVersion": {
+                        "type": "string",
+                        "description": "Version of the event type for which the subscription is created"
+                      },
+                      "resourceName": {
+                        "type": "string",
+                        "description": "Delegated access scope that event type is mapped to."
+                      },
+                      "status": {
+                        "type": "string",
+                        "description": "ACTIVE or INACTIVE status of the subscription"
+                      },
+                      "eventUrl": {
+                        "type": "string",
+                        "description": "Destination URL where notification will be received by seller"
+                      },
+                      "authDetails": {
+                        "type": "object",
+                        "properties": {
+                          "authMethod": {
+                            "type": "string",
+                            "description": "enumeration: BASIC_AUTH,OAUTH,HMAC"
+                          },
+                          "userName": {
+                            "type": "string",
+                            "description": "UserName to access destination URL"
+                          },
+                          "password": {
+                            "type": "string",
+                            "description": "Password to access destination URL"
+                          },
+                          "authHeaderName": {
+                            "type": "string",
+                            "description": "authHeaderName , using which authorization header will be passed"
+                          },
+                          "authUrl": {
+                            "type": "string",
+                            "description": "OAUTH URL"
+                          },
+                          "clientSecret": {
+                            "type": "string",
+                            "description": "Client Secret for OAUTH URL / HMAC"
+                          },
+                          "clientId": {
+                            "type": "string",
+                            "description": "ClientId for OAUTH URL"
+                          }
+                        },
+                        "description": "Authentication details for accessing the destination URL, if URL is protected"
+                      },
+                      "headers": {
+                        "type": "object",
+                        "properties": {
+                          "content-type": {
+                            "type": "string"
+                          }
+                        },
+                        "description": "Headers required for accessing the destination URL"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
       "Headers": {
         "type": "object",
         "properties": {
@@ -1543,6 +1636,166 @@
           "status": {
             "type": "string",
             "description": "ACTIVE or INACTIVE status of the subscription"
+          },
+          "eventUrl": {
+            "type": "string",
+            "description": "Destination URL where notification will be received by seller"
+          },
+          "authDetails": {
+            "type": "object",
+            "properties": {
+              "authMethod": {
+                "type": "string",
+                "description": "enumeration: BASIC_AUTH,OAUTH,HMAC"
+              },
+              "userName": {
+                "type": "string",
+                "description": "UserName to access destination URL"
+              },
+              "password": {
+                "type": "string",
+                "description": "Password to access destination URL"
+              },
+              "authHeaderName": {
+                "type": "string",
+                "description": "authHeaderName , using which authorization header will be passed"
+              },
+              "authUrl": {
+                "type": "string",
+                "description": "OAUTH URL"
+              },
+              "clientSecret": {
+                "type": "string",
+                "description": "Client Secret for OAUTH URL / HMAC"
+              },
+              "clientId": {
+                "type": "string",
+                "description": "ClientId for OAUTH URL"
+              }
+            },
+            "description": "Authentication details for accessing the destination URL, if URL is protected"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "content-type": {
+                "type": "string"
+              }
+            },
+            "description": "Headers required for accessing the destination URL"
+          }
+        }
+      },
+      "UpdateSubscriptionRequest": {
+        "type": "object",
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "description": "Event that is subscribed for notifications."
+          },
+          "eventVersion": {
+            "type": "string",
+            "description": "Version of the specific event type"
+          },
+          "resourceName": {
+            "type": "string",
+            "description": "Delegated access scope that event type is mapped to."
+          },
+          "eventUrl": {
+            "type": "string",
+            "description": "Destination URL where notification will be received by seller"
+          },
+          "authDetails": {
+            "type": "object",
+            "properties": {
+              "authMethod": {
+                "type": "string",
+                "description": "enumeration: BASIC_AUTH,OAUTH,HMAC"
+              },
+              "userName": {
+                "type": "string",
+                "description": "UserName to access destination URL"
+              },
+              "password": {
+                "type": "string",
+                "description": "Password to access destination URL"
+              },
+              "authHeaderName": {
+                "type": "string",
+                "description": "authHeaderName , using which authorization header will be passed"
+              },
+              "authUrl": {
+                "type": "string",
+                "description": "OAUTH URL"
+              },
+              "clientSecret": {
+                "type": "string",
+                "description": "Client Secret for OAUTH URL / HMAC"
+              },
+              "clientId": {
+                "type": "string",
+                "description": "ClientId for OAUTH URL"
+              }
+            },
+            "description": "Authentication details for accessing the destination URL, if URL is protected"
+          },
+          "headers": {
+            "type": "object",
+            "properties": {
+              "content-type": {
+                "type": "string"
+              }
+            },
+            "description": "Headers required for accessing the destination URL"
+          },
+          "status": {
+            "type": "string",
+            "description": "Status of the subscription. Allowed values are ACTIVE or INACTIVE"
+          }
+        }
+      },
+      "SubscriptionDeleteResponseDTO": {
+        "type": "object",
+        "properties": {
+          "subscriptionId": {
+            "type": "string",
+            "description": "Subscription Id of the subscription that is deleted"
+          },
+          "message": {
+            "type": "string",
+            "description": "Message confirming that the subscription has been deleted"
+          }
+        }
+      },
+      "TestNotificationResponseDTO": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Message confirming that the eventURL is validated"
+          }
+        }
+      },
+      "TestNotificationRequest": {
+        "required": [
+          "eventType",
+          "eventUrl",
+          "eventVersion",
+          "resourceName"
+        ],
+        "type": "object",
+        "properties": {
+          "eventType": {
+            "type": "string",
+            "description": "Event that you want to subscribe to"
+          },
+          "eventVersion": {
+            "type": "string",
+            "description": "Version of the specific event type"
+          },
+          "resourceName": {
+            "type": "string",
+            "description": "Functional category that event type is mapped to."
           },
           "eventUrl": {
             "type": "string",
@@ -1751,98 +2004,6 @@
           }
         }
       },
-      "SubscriptionDeleteResponseDTO": {
-        "type": "object",
-        "properties": {
-          "subscriptionId": {
-            "type": "string",
-            "description": "Subscription Id of the subscription that is deleted"
-          },
-          "message": {
-            "type": "string",
-            "description": "Message confirming that the subscription has been deleted"
-          }
-        }
-      },
-      "TestNotificationResponseDTO": {
-        "type": "object",
-        "properties": {
-          "message": {
-            "type": "string",
-            "description": "Message confirming that the eventURL is validated"
-          }
-        }
-      },
-      "TestNotificationRequest": {
-        "required": [
-          "eventType",
-          "eventUrl",
-          "eventVersion",
-          "resourceName"
-        ],
-        "type": "object",
-        "properties": {
-          "eventType": {
-            "type": "string",
-            "description": "Event that you want to subscribe to"
-          },
-          "eventVersion": {
-            "type": "string",
-            "description": "Version of the specific event type"
-          },
-          "resourceName": {
-            "type": "string",
-            "description": "Functional category that event type is mapped to."
-          },
-          "eventUrl": {
-            "type": "string",
-            "description": "Destination URL where notification will be received by seller"
-          },
-          "authDetails": {
-            "type": "object",
-            "properties": {
-              "authMethod": {
-                "type": "string",
-                "description": "enumeration: BASIC_AUTH,OAUTH,HMAC"
-              },
-              "userName": {
-                "type": "string",
-                "description": "UserName to access destination URL"
-              },
-              "password": {
-                "type": "string",
-                "description": "Password to access destination URL"
-              },
-              "authHeaderName": {
-                "type": "string",
-                "description": "authHeaderName , using which authorization header will be passed"
-              },
-              "authUrl": {
-                "type": "string",
-                "description": "OAUTH URL"
-              },
-              "clientSecret": {
-                "type": "string",
-                "description": "Client Secret for OAUTH URL / HMAC"
-              },
-              "clientId": {
-                "type": "string",
-                "description": "ClientId for OAUTH URL"
-              }
-            },
-            "description": "Authentication details for accessing the destination URL, if URL is protected"
-          },
-          "headers": {
-            "type": "object",
-            "properties": {
-              "content-type": {
-                "type": "string"
-              }
-            },
-            "description": "Headers required for accessing the destination URL"
-          }
-        }
-      },
       "EventType": {
         "type": "object",
         "properties": {
@@ -1893,167 +2054,6 @@
               },
               "description": "List of event types"
             }
-          }
-        }
-      },
-      "Events": {
-        "type": "object",
-        "properties": {
-          "events": {
-            "type": "array",
-            "description": "List of events",
-            "items": {
-              "type": "object",
-              "properties": {
-                "event": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "eventType": {
-                        "type": "string",
-                        "description": "Event for which the subscription is created"
-                      },
-                      "subscriptionId": {
-                        "type": "string",
-                        "description": "Unique ID for the subscription that can be used for fetching details, editing or deleting the subscription"
-                      },
-                      "partnerId": {
-                        "type": "string",
-                        "description": "Partner ID of the seller who created the subscription"
-                      },
-                      "eventVersion": {
-                        "type": "string",
-                        "description": "Version of the event type for which the subscription is created"
-                      },
-                      "resourceName": {
-                        "type": "string",
-                        "description": "Delegated access scope that event type is mapped to."
-                      },
-                      "status": {
-                        "type": "string",
-                        "description": "ACTIVE or INACTIVE status of the subscription"
-                      },
-                      "eventUrl": {
-                        "type": "string",
-                        "description": "Destination URL where notification will be received by seller"
-                      },
-                      "authDetails": {
-                        "type": "object",
-                        "properties": {
-                          "authMethod": {
-                            "type": "string",
-                            "description": "enumeration: BASIC_AUTH,OAUTH,HMAC"
-                          },
-                          "userName": {
-                            "type": "string",
-                            "description": "UserName to access destination URL"
-                          },
-                          "password": {
-                            "type": "string",
-                            "description": "Password to access destination URL"
-                          },
-                          "authHeaderName": {
-                            "type": "string",
-                            "description": "authHeaderName , using which authorization header will be passed"
-                          },
-                          "authUrl": {
-                            "type": "string",
-                            "description": "OAUTH URL"
-                          },
-                          "clientSecret": {
-                            "type": "string",
-                            "description": "Client Secret for OAUTH URL / HMAC"
-                          },
-                          "clientId": {
-                            "type": "string",
-                            "description": "ClientId for OAUTH URL"
-                          }
-                        },
-                        "description": "Authentication details for accessing the destination URL, if URL is protected"
-                      },
-                      "headers": {
-                        "type": "object",
-                        "properties": {
-                          "content-type": {
-                            "type": "string"
-                          }
-                        },
-                        "description": "Headers required for accessing the destination URL"
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "UpdateSubscriptionRequest": {
-        "type": "object",
-        "properties": {
-          "eventType": {
-            "type": "string",
-            "description": "Event that is subscribed for notifications."
-          },
-          "eventVersion": {
-            "type": "string",
-            "description": "Version of the specific event type"
-          },
-          "resourceName": {
-            "type": "string",
-            "description": "Delegated access scope that event type is mapped to."
-          },
-          "eventUrl": {
-            "type": "string",
-            "description": "Destination URL where notification will be received by seller"
-          },
-          "authDetails": {
-            "type": "object",
-            "properties": {
-              "authMethod": {
-                "type": "string",
-                "description": "enumeration: BASIC_AUTH,OAUTH,HMAC"
-              },
-              "userName": {
-                "type": "string",
-                "description": "UserName to access destination URL"
-              },
-              "password": {
-                "type": "string",
-                "description": "Password to access destination URL"
-              },
-              "authHeaderName": {
-                "type": "string",
-                "description": "authHeaderName , using which authorization header will be passed"
-              },
-              "authUrl": {
-                "type": "string",
-                "description": "OAUTH URL"
-              },
-              "clientSecret": {
-                "type": "string",
-                "description": "Client Secret for OAUTH URL / HMAC"
-              },
-              "clientId": {
-                "type": "string",
-                "description": "ClientId for OAUTH URL"
-              }
-            },
-            "description": "Authentication details for accessing the destination URL, if URL is protected"
-          },
-          "headers": {
-            "type": "object",
-            "properties": {
-              "content-type": {
-                "type": "string"
-              }
-            },
-            "description": "Headers required for accessing the destination URL"
-          },
-          "status": {
-            "type": "string",
-            "description": "Status of the subscription. Allowed values are ACTIVE or INACTIVE"
           }
         }
       }
